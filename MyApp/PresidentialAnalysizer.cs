@@ -9,13 +9,13 @@ using System.Reflection.Metadata;
 class PresidentAnalyzer {
 
     public bool IsNaturalBornCitizen = false;
-    public required string BirthDate {get; set; }
-    public required int YearsResidedInUs {get; set;}
-    public required int NumOfTerms {get; set;}
-    public required bool IsRebellious = false;
+    public string BirthDate {get; set; }
+    public int YearsResidedInUs {get; set;}
+    public int NumOfTerms {get; set;}
+    public bool IsRebellious = false;
     public readonly PresidentRequirents presidentRequirents = new PresidentRequirents();
 
-    PresidentAnalyzer(bool isNaturalBornCitizen, string birthDate, int yearsResidedInUs, int numOfTerms, bool isRebellious) {
+    public PresidentAnalyzer(bool isNaturalBornCitizen, string birthDate, int yearsResidedInUs, int numOfTerms, bool isRebellious) {
         IsNaturalBornCitizen = isNaturalBornCitizen;
         BirthDate = birthDate;
         YearsResidedInUs = yearsResidedInUs;
@@ -23,6 +23,8 @@ class PresidentAnalyzer {
         IsRebellious = isRebellious;
 
     }
+
+    
 
     /**
         this method is responsible for checking if user is eligible for president or not 
@@ -62,10 +64,10 @@ class PresidentAnalyzer {
         if (!CheckTermsEligiblity()) {
             tempResponse += "To many terms have been served \n";
         }
-        if (CheckBirthEligibility()) {
+        if (!CheckBirthEligibility()) {
             tempResponse += "To young to serve \n";
         }
-        if (CheckYearsUSResident()) {
+        if (!CheckYearsUSResident()) {
             tempResponse += "Residency not acheived to Serve \n";
         }
         if (IsRebellious) { 
